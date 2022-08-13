@@ -4,13 +4,16 @@ $mensaje = "";
 
 
 if (isset($_POST["iniciar"])){
+
     $usuario = $_POST["usuario"];
     $clave = $_POST["clave"];
+     $tipo = $_POST["tipo"];
     $usuario == strtoupper("usuario");
 
     if ($usuario == "ADMIN" && $clave == "12345"){
   
         $_SESSION["user"]="admin";
+        $_SESSION["tipo"]= $tipo;
         $_SESSION["autorizado"]= true;
         header("location: principal.php");
 
@@ -39,6 +42,9 @@ if (isset($_POST["iniciar"])){
            <label for="">clave</label>
         <input type="password" name="clave" placeholder="password">
         <br><br>
+         <select name="tipo" id="">
+            <option value="administrador">Administrador</option>
+            <option value="invitado">Invitado</option>
         
         <button type="submit" name="iniciar">INICIAR SESION</button>
 </form>
